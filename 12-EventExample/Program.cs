@@ -8,7 +8,16 @@ Subscriber subscriber = new Subscriber();
 
 //publisher.RiseEvent(10, 11);
 
-publisher.MyAutoImplementedEvent += subscriber.Add;
+//Anonymous Method
+publisher.MyAutoImplementedEvent += delegate (int a, int b)
+{
+    Console.WriteLine(a+b);
+};
+
+//Lambda 
+publisher.MyAutoImplementedEvent += (int a, int b)=> Console.WriteLine(a + b);
+
+
 publisher.RiseAutoImplementedEvent(10, 11);
 publisher.RiseAutoImplementedEvent(4, 10);
 publisher.RiseAutoImplementedEvent(10, 110);
